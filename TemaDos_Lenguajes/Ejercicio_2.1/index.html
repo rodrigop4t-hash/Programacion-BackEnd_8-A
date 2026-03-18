@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Receta</title>
+    <style>
+        .card {
+            border: 2px solid #2ecc71;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            font-family: sans-serif;
+        }
+        .precio {
+            color: #e67e22;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1 id="taco-nombre">Cargando...</h1>
+        <p class="precio">Precio: <span id="taco-precio">0</span></p>
+        <h3>Acompañamientos:</h3>
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+        // JSON
+        const taco = {
+            nombre: "Taco lechon",
+            precio: 20,
+            ingredientes: {
+                acompañamientos: [
+                    { nombre: "Cebolla", cantidad: "1 cucharada" },
+                    { nombre: "Guacamole", cantidad: "2 cucharadas" }
+                ]
+            }
+        };
+
+        // 1. Mostrar nombre
+        document.getElementById("taco-nombre").textContent = taco.nombre;
+
+        // 2. Mostrar precio
+        document.getElementById("taco-precio").textContent = "$" + taco.precio;
+
+        // 3. Mostrar acompañamientos
+        const lista = document.getElementById("lista");
+
+        taco.ingredientes.acompañamientos.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item.nombre + " (" + item.cantidad + ")";
+            lista.appendChild(li);
+        });
+
+    </script>
+
+</body>
+</html>
